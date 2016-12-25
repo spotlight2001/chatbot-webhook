@@ -1,0 +1,39 @@
+{
+   "id":"84cf326a-529b-44bc-877b-e6ab6b69c0f6",
+   "timestamp":"2016-12-24T00:19:04.035Z",
+   "result":{
+      "source":"agent",
+      "resolvedQuery":"wie ist die Nummer von Walter",
+      "speech":"",
+      "action":"GetPersonDataFromTelephoneList",
+      "actionIncomplete":false,
+      "parameters":{
+         "firstname":"Walter"
+      },
+      "contexts":[
+
+      ],
+      "metadata":{
+         "intentId":"a29900c3-e37c-4ac8-9503-04190a89b8c1",
+         "webhookUsed":"true",
+         "webhookForSlotFillingUsed":"false",
+         "intentName":"GetPersonData"
+      },
+      "fulfillment":{
+         "speech":"",
+         "messages":[
+            {
+               "type":0,
+               "speech":""
+            }
+         ]
+      },
+      "score":1.0
+   },
+   "status":{
+      "code":200,
+      "errorType":"success"
+   },
+   "sessionId":"1487e981-f005-468d-934b-54f37ea89124",
+   "originalRequest":null
+}

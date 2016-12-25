@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>kreamont-chatbot-neo4j</artifactId>
+
+	<parent>
+		<groupId>at.kreamont</groupId>
+		<artifactId>kreamont-chatbot-parent</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<properties>
+		<!-- use old neo4j version which works with java7, which works with our 
+			openshift cartridge -->
+		<neo4j.version>2.3.8</neo4j.version>
+	</properties>
+
+	<dependencies>
+		<!-- NEO4J -->
+		<dependency>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j-cypher</artifactId>
+			<version>${neo4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j-kernel</artifactId>
+			<version>${neo4j.version}</version>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j-io</artifactId>
+			<version>${neo4j.version}</version>
+			<type>test-jar</type>
+		</dependency>
+	</dependencies>
+
+</project>
