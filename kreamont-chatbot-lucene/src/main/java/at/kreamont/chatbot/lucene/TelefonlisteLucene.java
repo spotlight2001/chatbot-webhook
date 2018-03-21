@@ -46,22 +46,22 @@ public class TelefonlisteLucene {
 				String row = rows[i];
 				String[] fields = row.split(";");
 
-				if (fields.length < 21) {
+				if (fields.length < 18) {
 					continue;
 				}
 
 				String kidFirstname = fields[1];
 				String kidLastname = fields[0];
 
-				String phone = fields[3];
+				String phone = fields[4];
 
-				String motherFirstname = fields[4];
-				String motherLastname = fields[5];
-				String motherMobile = fields[6];
+				String motherFirstname = fields[5];
+				String motherLastname = fields[6];
+				String motherMobile = fields[7];
 
-				String fatherFirstname = fields[7];
-				String fatherLastname = fields[8];
-				String fatherMobile = fields[9];
+				String fatherFirstname = fields[8];
+				String fatherLastname = fields[9];
+				String fatherMobile = fields[10];
 
 				boolean hasKid = StringUtils.isNotEmpty(kidFirstname) && StringUtils.isNotEmpty(kidLastname);
 				boolean hasMother = StringUtils.isNotEmpty(motherFirstname) && StringUtils.isNotEmpty(motherLastname);
@@ -98,7 +98,7 @@ public class TelefonlisteLucene {
 				}
 
 				LOGGER.debug(String.format("csv row has '%s' values", fields.length));
-				if (fields.length < 21) {
+				if (fields.length < 18) {
 					continue;
 				}
 			}
