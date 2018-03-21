@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import javax.annotation.PostConstruct;
 import javax.xml.bind.DatatypeConverter;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ import ai.api.GsonFactory;
 import ai.api.model.AIResponse;
 import at.kreamont.chatbot.lucene.TelefonlisteLucene;
 import at.kreamont.chatbot.model.FulfillmentResponse;
+import at.kreamont.chatbot.service.GoogleCalendarService;
 
 @RestController
 @RequestMapping("telefonliste")
@@ -46,6 +48,8 @@ public class TelefonlisteResource {
 	private final Gson gson = GsonFactory.getDefaultFactory().getGson();
 
 	@Autowired private Environment env;
+	
+	@Autowired private GoogleCalendarService googleCalendarService;
 	
 	public void setTelefonlisteCsv(String telefonlisteCsv) {
 		this.telefonlisteCsv = telefonlisteCsv;
@@ -88,12 +92,18 @@ public class TelefonlisteResource {
 	// ist die Nummer von
 	// Walter","speech":"","action":"GetPersonDataFromTelephoneList","actionIncomplete":false,"parameters":{"personName":"Walter"},"contexts":[],"metadata":{"intentId":"a29900c3-e37c-4ac8-9503-04190a89b8c1","webhookUsed":"true","webhookForSlotFillingUsed":"false","intentName":"GetPersonData"},"fulfillment":{"speech":"","messages":[{"type":0,"speech":""}]},"score":1.0},"status":{"code":200,"errorType":"success"},"sessionId":"1487e981-f005-468d-934b-54f37ea89124","originalRequest":null}
 	@RequestMapping(method = RequestMethod.POST, path = "fulfillment", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public FulfillmentResponse getFulfillment(@RequestBody String request) {
+	public FulfillmentResponse getFulfillment(@RequestBody String requestStr) {
 		LOGGER.debug("getFulfillment gets called");
-		LOGGER.info(request);
-		final AIResponse aiResponse = gson.fromJson(request, AIResponse.class);
-		String firstname = getParameter(aiResponse, "firstname");
-		String lastname = getParameter(aiResponse, "lastname");
+		LOGGER.info(requestStr);
+		final AIResponse request = gson.fromJson(requestStr, AIResponse.class);
+		
+		String action = request.getResult().getAction();
+		if (StringUtils.containsIgnoreCase(action, "termin")) {
+			return googleCalendarService.get();
+		}
+		
+		String firstname = getParameter(request, "firstname");
+		String lastname = getParameter(request, "lastname");
 
 		FulfillmentResponse out = new FulfillmentResponse();
 		LOGGER.info("use personName: " + firstname + " " + lastname);
