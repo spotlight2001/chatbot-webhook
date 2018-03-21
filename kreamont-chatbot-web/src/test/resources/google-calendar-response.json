@@ -1,0 +1,97 @@
+{
+	"kind": "calendar#events",
+	"etag": "\"p32o8tp5dvroti0g\"",
+	"summary": "kreamont.public",
+	"description": "Termine der Privatschule Kreamont",
+	"updated": "2018-03-16T23:23:35.646Z",
+	"timeZone": "Europe/Vienna",
+	"accessRole": "reader",
+	"defaultReminders": [],
+	"nextPageToken": "CigKGjRmZ3NpcmlqYW1lODUzb3Rxb2FtMHQ1MWo1GAEggIDA_YK0ifMVGg0IABIAGLCO5K3-8dkC",
+	"items": [
+		{
+			"kind": "calendar#event",
+			"etag": "\"3009777082986000\"",
+			"id": "189f8hlokcfovvdegrokb8icgk",
+			"status": "confirmed",
+			"htmlLink": "https://www.google.com/calendar/event?eid=MTg5ZjhobG9rY2ZvdnZkZWdyb2tiOGljZ2sgMzJrYnI0ZHNkbGpzcWdwc3JvbW0yZGV0NWNAZw&ctz=Europe/Vienna",
+			"created": "2017-09-08T16:35:41.000Z",
+			"updated": "2017-09-08T16:35:41.493Z",
+			"summary": "Elternabend 18:30-21h",
+			"creator": {
+				"email": "pieringerzimmel@tele2.at",
+				"displayName": "Daniela Pieringer"
+			},
+			"organizer": {
+				"email": "32kbr4dsdljsqgpsromm2det5c@group.calendar.google.com",
+				"displayName": "kreamont.public",
+				"self": true
+			},
+			"start": {
+				"date": "2018-03-01"
+			},
+			"end": {
+				"date": "2018-03-02"
+			},
+			"transparency": "transparent",
+			"iCalUID": "189f8hlokcfovvdegrokb8icgk@google.com",
+			"sequence": 0
+		},
+		{
+			"kind": "calendar#event",
+			"etag": "\"3009777204302000\"",
+			"id": "6am08c3hbhio60rljse50pvhub",
+			"status": "confirmed",
+			"htmlLink": "https://www.google.com/calendar/event?eid=NmFtMDhjM2hiaGlvNjBybGpzZTUwcHZodWIgMzJrYnI0ZHNkbGpzcWdwc3JvbW0yZGV0NWNAZw&ctz=Europe/Vienna",
+			"created": "2017-09-08T16:36:42.000Z",
+			"updated": "2017-09-08T16:36:42.151Z",
+			"summary": "Elternabend 18:30-21h",
+			"creator": {
+				"email": "pieringerzimmel@tele2.at",
+				"displayName": "Daniela Pieringer"
+			},
+			"organizer": {
+				"email": "32kbr4dsdljsqgpsromm2det5c@group.calendar.google.com",
+				"displayName": "kreamont.public",
+				"self": true
+			},
+			"start": {
+				"date": "2018-04-25"
+			},
+			"end": {
+				"date": "2018-04-26"
+			},
+			"transparency": "transparent",
+			"iCalUID": "6am08c3hbhio60rljse50pvhub@google.com",
+			"sequence": 0
+		},
+		{
+			"kind": "calendar#event",
+			"etag": "\"3009777239542000\"",
+			"id": "4fgsirijame853otqoam0t51j5",
+			"status": "confirmed",
+			"htmlLink": "https://www.google.com/calendar/event?eid=NGZnc2lyaWphbWU4NTNvdHFvYW0wdDUxajUgMzJrYnI0ZHNkbGpzcWdwc3JvbW0yZGV0NWNAZw&ctz=Europe/Vienna",
+			"created": "2017-09-08T16:36:59.000Z",
+			"updated": "2017-09-08T16:36:59.771Z",
+			"summary": "schulfrei",
+			"creator": {
+				"email": "pieringerzimmel@tele2.at",
+				"displayName": "Daniela Pieringer"
+			},
+			"organizer": {
+				"email": "32kbr4dsdljsqgpsromm2det5c@group.calendar.google.com",
+				"displayName": "kreamont.public",
+				"self": true
+			},
+			"start": {
+				"date": "2018-05-11"
+			},
+			"end": {
+				"date": "2018-05-12"
+			},
+			"transparency": "transparent",
+			"iCalUID": "4fgsirijame853otqoam0t51j5@google.com",
+			"sequence": 0
+		}
+	]
+}
