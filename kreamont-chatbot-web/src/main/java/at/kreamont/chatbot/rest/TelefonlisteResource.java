@@ -33,6 +33,7 @@ import ai.api.model.AIResponse;
 import at.kreamont.chatbot.lucene.TelefonlisteLucene;
 import at.kreamont.chatbot.model.FulfillmentResponse;
 import at.kreamont.chatbot.service.GoogleCalendarService;
+import at.kreamont.chatbot.service.WordpressNewsService;
 
 @RestController
 @RequestMapping("telefonliste")
@@ -47,10 +48,15 @@ public class TelefonlisteResource {
 
 	private final Gson gson = GsonFactory.getDefaultFactory().getGson();
 
-	@Autowired private Environment env;
-	
-	@Autowired private GoogleCalendarService googleCalendarService;
-	
+	@Autowired
+	private Environment env;
+
+	@Autowired
+	private GoogleCalendarService googleCalendarService;
+
+	@Autowired
+	private WordpressNewsService wordpressNewsService;
+
 	public void setTelefonlisteCsv(String telefonlisteCsv) {
 		this.telefonlisteCsv = telefonlisteCsv;
 	}
@@ -64,7 +70,8 @@ public class TelefonlisteResource {
 	void getTelefonlisteCsvFromRemote() throws URISyntaxException {
 		String url = "http://www.kreamont.at/telefonliste/telefonliste.csv";
 
-		String plainCreds = env.getRequiredProperty("KREAMONT_USER") + ":" + env.getRequiredProperty("KREAMONT_PASSWORD");
+		String plainCreds = env.getRequiredProperty("KREAMONT_USER") + ":"
+				+ env.getRequiredProperty("KREAMONT_PASSWORD");
 		String base64Creds = DatatypeConverter.printBase64Binary(plainCreds.getBytes(StandardCharsets.UTF_8));
 
 		HttpHeaders headers = new HttpHeaders();
@@ -72,13 +79,13 @@ public class TelefonlisteResource {
 		RequestEntity<Void> requestEntity = new RequestEntity<Void>(headers, HttpMethod.GET, new URI(url));
 
 		RestTemplate client = new RestTemplate();
-		// csv is actually UTF-8 but http response doesnt tell - so our code thinks its latin1 which is wrong
-		client.getMessageConverters()
-        .add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
+		// csv is actually UTF-8 but http response doesnt tell - so our code thinks its
+		// latin1 which is wrong
+		client.getMessageConverters().add(0, new StringHttpMessageConverter(Charset.forName("UTF-8")));
 		ResponseEntity<String> exchange = client.exchange(requestEntity, String.class);
 		String csv = exchange.getBody();
 		this.telefonlisteCsv = csv;
-		
+
 		LOGGER.info(telefonlisteCsv);
 	}
 
@@ -96,12 +103,14 @@ public class TelefonlisteResource {
 		LOGGER.debug("getFulfillment gets called");
 		LOGGER.info(requestStr);
 		final AIResponse request = gson.fromJson(requestStr, AIResponse.class);
-		
+
 		String action = request.getResult().getAction();
 		if (StringUtils.containsIgnoreCase(action, "termin")) {
 			return googleCalendarService.get();
+		} else if (StringUtils.containsIgnoreCase(action, "news")) {
+			return wordpressNewsService.get();
 		}
-		
+
 		String firstname = getParameter(request, "firstname");
 		String lastname = getParameter(request, "lastname");
 
