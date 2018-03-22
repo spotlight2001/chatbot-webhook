@@ -30,7 +30,7 @@ public class TelefonlisteLuceneTest {
 	@Test
 	public void firstnameShouldBeFound() {
 		testMe.index(csv);
-		String answer = testMe.getTelephoneNumberAnswer("Walter", null);
+		String answer = testMe.getTelephoneNumberAnswer("Walter", "murit");
 		System.out.println("answer: " + answer);
 		assertThat(answer, containsString("Walter"));
 	}
@@ -38,7 +38,7 @@ public class TelefonlisteLuceneTest {
 	@Test
 	public void firstnameCaseInsensitiveShouldBeFound() {
 		testMe.index(csv);
-		String answer = testMe.getTelephoneNumberAnswer("walTer", null);
+		String answer = testMe.getTelephoneNumberAnswer("walTer", "murit");
 		System.out.println("answer: " + answer);
 		assertThat(answer, containsString("Walter"));
 	}
@@ -46,7 +46,7 @@ public class TelefonlisteLuceneTest {
 	@Test
 	public void fuzzySearchShouldWork() {
 		testMe.index(csv);
-		String answer = testMe.getTelephoneNumberAnswer("walTe", null);
+		String answer = testMe.getTelephoneNumberAnswer("walTe", "murit");
 		System.out.println("answer: " + answer);
 		assertThat(answer, containsString("Walter"));
 	}
