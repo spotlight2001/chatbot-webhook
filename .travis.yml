@@ -1,3 +1,11 @@
-language: java
-jdk: oraclejdk8
-script: AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" AWS_SECRET_KEY="$AWS_SECRET_KEY" mvn clean install beanstalk:upload-source-bundle beanstalk:create-application-version beanstalk:update-environment
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+  region: "eu-central-1"  
+  app: "kreamont-chatbot"
+  env: "kreamont-chatbot-dev"
+  bucket_name: "elasticbeanstalk-eu-central-1-539329046248"
+  on:
+branch: master

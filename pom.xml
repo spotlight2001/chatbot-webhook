@@ -13,7 +13,6 @@
 	</parent>
 
 	<modules>
-		<module>kreamont-chatbot-neo4j</module>
 		<module>kreamont-chatbot-lucene</module>
 		<module>kreamont-chatbot-web</module>
 	</modules>
@@ -24,6 +23,9 @@
 		<java.version>1.8</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
+		
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+		<beanstalk.versionLabel>${maven.build.timestamp}</beanstalk.versionLabel>
 	</properties>
 
 	<dependencies>
