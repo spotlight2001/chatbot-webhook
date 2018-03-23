@@ -21,7 +21,7 @@ import at.kreamont.chatbot.service.TelefonlisteService;
 import at.kreamont.chatbot.service.WordpressNewsService;
 
 @RestController
-@RequestMapping("telefonliste")
+@RequestMapping("dialogflow")
 public class DialogflowWebhookResource {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DialogflowWebhookResource.class);
