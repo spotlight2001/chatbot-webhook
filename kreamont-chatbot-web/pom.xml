@@ -35,7 +35,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>kreamont-chatbot</finalName>
+		<finalName>kreamont-chatbot-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -48,7 +48,6 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<descriptor>assembly.xml</descriptor>
-					<finalName>kreamont-chatbot-${pom.version}</finalName>
 				</configuration>
 				<executions>
 					<execution>
