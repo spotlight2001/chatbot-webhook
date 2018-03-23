@@ -22,40 +22,32 @@ public class TelefonlisteLuceneTest {
 	@Test
 	public void firstnameAndLastnameShouldBeFound() {
 		testMe.index(csv);
-		String answer = testMe.getTelephoneNumberAnswer("Walter", "Mauritz");
+		String answer = testMe.getTelephoneNumberAnswer("alter", "Murit");
 		System.out.println("answer: " + answer);
-		assertThat(answer, containsString("Walter"));
+		assertThat(answer, containsString("alter"));
 	}
 	
 	@Test
 	public void firstnameShouldBeFound() {
 		testMe.index(csv);
-		String answer = testMe.getTelephoneNumberAnswer("Walter", "murit");
+		String answer = testMe.getTelephoneNumberAnswer("alter", "murit");
 		System.out.println("answer: " + answer);
-		assertThat(answer, containsString("Walter"));
+		assertThat(answer, containsString("alter"));
 	}
 	
 	@Test
 	public void firstnameCaseInsensitiveShouldBeFound() {
 		testMe.index(csv);
-		String answer = testMe.getTelephoneNumberAnswer("walTer", "murit");
+		String answer = testMe.getTelephoneNumberAnswer("aNna", "murIt");
 		System.out.println("answer: " + answer);
-		assertThat(answer, containsString("Walter"));
-	}
-	
-	@Test
-	public void fuzzySearchShouldWork() {
-		testMe.index(csv);
-		String answer = testMe.getTelephoneNumberAnswer("walTe", "murit");
-		System.out.println("answer: " + answer);
-		assertThat(answer, containsString("Walter"));
+		assertThat(answer, containsString("anna"));
 	}
 	
 	@Test
 	public void fuzzySearchWithFirstAndLastnameShouldWork() {
 		testMe.index(csv);
-		String answer = testMe.getTelephoneNumberAnswer("walTe", "Muritz");
+		String answer = testMe.getTelephoneNumberAnswer("alte", "Muritz");
 		System.out.println("answer: " + answer);
-		assertThat(answer, containsString("Walter"));
+		assertThat(answer, containsString("alter"));
 	}
 }

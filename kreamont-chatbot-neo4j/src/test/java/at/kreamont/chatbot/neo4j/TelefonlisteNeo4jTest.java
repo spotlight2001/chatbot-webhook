@@ -22,8 +22,8 @@ public class TelefonlisteNeo4jTest {
 	@Test
 	public void getTelephoneNumberAnswerShouldSucceed() {
 		testMe.index(csv);
-		String answer = testMe.getTelephoneNumberAnswer("alTer");
+		String answer = testMe.getTelephoneNumberAnswer("mUrit");
 		System.out.println("answer: " + answer);
-		assertThat(answer, containsString("Walter"));
+		assertThat(answer, containsString("Murit"));
 	}
 }
