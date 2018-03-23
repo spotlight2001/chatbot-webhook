@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,7 +22,6 @@ public class GoogleCalendarService {
 		// 2018-02-26T00:00:00+01:00
 		DateTimeFormatter googleDateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'00:00:00+01:00");
 		url += LocalDateTime.now().format(googleDateTimeFormat);
-		Map<String, String> params = new HashMap<>();
 		ResponseEntity<String> response = client.getForEntity(url, String.class);
 		String jsonStr = response.getBody();
 		ObjectMapper mapper = new ObjectMapper();
