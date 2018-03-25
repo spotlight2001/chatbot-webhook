@@ -11,5 +11,5 @@ deploy:
   bucket_name: "elasticbeanstalk-eu-central-1-539329046248"
   on:
   skip_cleanup: true
-  zip_file: kreamont-chatbot-web/target/kreamont-chatbot-1.0-fatjar.zip
+  zip_file: kreamont-chatbot-web/target/kreamont-chatbot-fatjar.zip
 branch: master
