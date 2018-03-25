@@ -45,7 +45,7 @@ public class DialogflowWebhookResource {
 		LOGGER.debug("getFulfillment gets called");
 		LOGGER.info(requestStr);
 		final AIResponse request = gson.fromJson(requestStr, AIResponse.class);
-
+		
 		String action = request.getResult().getAction();
 		if (StringUtils.containsIgnoreCase(action, "termin")) {
 			return googleCalendarService.get();

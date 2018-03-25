@@ -75,7 +75,7 @@ public class TelefonlisteService {
 	}
 
 	public FulfillmentResponse getFulfillment(String firstname, String lastname) {
-		FulfillmentResponse out = new FulfillmentResponse();
+		FulfillmentResponse out = new FulfillmentResponse();		
 		out.setSpeech(db.getTelephoneNumberAnswer(firstname, lastname));
 		return out;
 	}
