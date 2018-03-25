@@ -11,12 +11,11 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import at.kreamont.chatbot.model.FulfillmentResponse;
+import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookResponse;
 
 @Service
 public class GoogleCalendarService {
-	public FulfillmentResponse get() {
+	public GoogleCloudDialogflowV2WebhookResponse get() {
 		RestTemplate client = new RestTemplate();
 		String url = "https://clients6.google.com/calendar/v3/calendars/32kbr4dsdljsqgpsromm2det5c@group.calendar.google.com/events?calendarId=32kbr4dsdljsqgpsromm2det5c@group.calendar.google.com&singleEvents=true&timeZone=Europe/Vienna&maxAttendees=1&maxResults=3&sanitizeHtml=true&key=AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs&timeMin=";
 		// 2018-02-26T00:00:00+01:00
@@ -39,8 +38,8 @@ public class GoogleCalendarService {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 			buf.append(item.get("summary").asText()).append(" am ").append(formatter.format(localDate)).append("\n");
 		});
-		FulfillmentResponse result = new FulfillmentResponse();
-		result.setSpeech(buf.toString());
+		GoogleCloudDialogflowV2WebhookResponse result = new GoogleCloudDialogflowV2WebhookResponse();
+		result.setFulfillmentText(buf.toString());
 		return result;
 	}
 }

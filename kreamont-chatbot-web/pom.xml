@@ -32,6 +32,14 @@
 			<artifactId>libai</artifactId>
 			<version>1.6.12</version>
 		</dependency>
+		
+		<!-- DIALOGFLOW -->
+		<dependency>
+		    <groupId>com.google.apis</groupId>
+		    <artifactId>google-api-services-dialogflow</artifactId>
+		    <version>v2-rev2-1.23.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
