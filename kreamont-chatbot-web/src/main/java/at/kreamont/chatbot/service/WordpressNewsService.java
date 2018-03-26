@@ -8,11 +8,12 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookResponse;
+
+import at.kreamont.chatbot.model.FulfillmentResponse;
 
 @Service
 public class WordpressNewsService {
-	public GoogleCloudDialogflowV2WebhookResponse get() {
+	public FulfillmentResponse get() {
 		RestTemplate client = new RestTemplate();
 		String url = "http://www.kreamont.at/wp-json/wp/v2/posts?per_page=1";
 		ResponseEntity<String> response = client.getForEntity(url, String.class);
@@ -30,8 +31,8 @@ public class WordpressNewsService {
 			String title = item.get("title").get("rendered").asText();
 			buf.append(title).append("\n");
 		});
-		GoogleCloudDialogflowV2WebhookResponse result = new GoogleCloudDialogflowV2WebhookResponse();
-		result.setFulfillmentText(buf.toString());
+		FulfillmentResponse result = new FulfillmentResponse();
+		result.setSpeech(buf.toString());
 		return result;
 	}
 }

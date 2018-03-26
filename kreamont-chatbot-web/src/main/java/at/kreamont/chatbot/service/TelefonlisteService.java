@@ -20,9 +20,8 @@ import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.google.api.services.dialogflow.v2.model.GoogleCloudDialogflowV2WebhookResponse;
-
 import at.kreamont.chatbot.lucene.TelefonlisteLucene;
+import at.kreamont.chatbot.model.FulfillmentResponse;
 
 @Service
 public class TelefonlisteService {
@@ -75,9 +74,9 @@ public class TelefonlisteService {
 		db.index(this.telefonlisteCsv);
 	}
 
-	public GoogleCloudDialogflowV2WebhookResponse getFulfillment(String firstname, String lastname) {
-		GoogleCloudDialogflowV2WebhookResponse out = new GoogleCloudDialogflowV2WebhookResponse();		
-		out.setFulfillmentText(db.getTelephoneNumberAnswer(firstname, lastname));
+	public FulfillmentResponse getFulfillment(String firstname, String lastname) {
+		FulfillmentResponse out = new FulfillmentResponse();		
+		out.setSpeech(db.getTelephoneNumberAnswer(firstname, lastname));
 		return out;
 	}
 }
